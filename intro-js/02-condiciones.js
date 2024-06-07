@@ -3,7 +3,9 @@
 //? falsy : null, 0, NaN, false
 //? nulish : undefined, null
 
-let n1 = 5
+//? && , || ! 
+
+let n1 = 0
 let n2 = Number('bd') // -> convertir a numero
 
 console.log(n2)
@@ -19,6 +21,10 @@ let n3; // es undefined
 //* no se cumple la condicion por ser un nullish
 if (n3) {
     console.log('Es undefined')
+}
+
+if (!(n1 == 0)) {
+    console.log('Es un numero y se cumple la condición')
 }
 
 let n4 = 10
