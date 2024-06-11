@@ -6,7 +6,7 @@ numeros.unshift('Inicio')
 numeros.pop(); // Elimina el último elemento del array
 numeros.shift(); // Elimina el primer elemento del array
 
-// delete numeros[2]; // Elimina el elemento, pero deja un espacio vacío
+// delete numeros[2]; // Elimina el elemento, pero deja un espacio vacío (undefined)
 
 // param1: la posicion a partir de la cual que quiero eliminar
 // param2: la cantidad de elementos que quiero eliminar
