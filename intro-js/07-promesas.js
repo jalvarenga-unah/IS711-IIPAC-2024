@@ -52,7 +52,7 @@ async function ejecutarPromesa() {
 
 }
 
-Promise.allSettled([
+Promise.all([
     ejecutarPromesa(),
     ejecutarPromesa(),
     ejecutarPromesa(),
