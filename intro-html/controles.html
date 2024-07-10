@@ -5,30 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Controles de HTML</title>
+    
 </head>
 
 <body>
 
-    <h1>Controles de HTML</h1>
+    <h1 id="titulo">Controles de HTML</h1>
     <br>
     <hr>
 
-    <h2>Input</h2>
+    <h2 id="subtitulo" >Input</h2>
 
     <form action="#" method="get">
 
-
-        <input type="text" name="nombre" value="Juan Alvarenga">
+        <input type="text" required name="nombre" value="Juan Alvarenga">
 
         <br><br>
 
-        <input type="email" name="correo" placeholder="Ingrese un correo ">
+        <input type="email" required name="correo" value="algo@algo.com" placeholder="Ingrese un correo ">
 
         <br><br>
         <!-- <input type="date" >
     <input type="time" >
     <input type="datetime-local" > -->
-        <input type="password" name="contrasenia" id="">
+        <input type="password" name="contrasenia" value="123" id="">
 
         <br><br>
 
@@ -40,7 +40,8 @@
     <!-- <input type="number" value="8"  min="5" max="10"> -->
 
 
-
+    <!-- TODO: cargar desde el head -->
+    <script src="./js/controles.js"></script>
 </body>
 
 </html>
