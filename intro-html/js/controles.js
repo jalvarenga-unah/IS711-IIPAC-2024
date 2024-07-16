@@ -25,26 +25,35 @@ const inputs = document.querySelectorAll('input')
 const form = document.querySelector('form')
 
 //asignar un listener
-guardar.addEventListener('click', (event) => {
+// guardar.addEventListener('click', (event) => {
 
-    const data = {}
+//     const data = {}
 
-    inputs.forEach(({ value, name }) => {
-        data[name] = value
+//     inputs.forEach(({ value, name }) => {
+//         data[name] = value
 
-    })
+//     })
 
-    console.log(data)
+//     console.log(data)
 
-})
+// })
 
 
 form.addEventListener('submit', (event) => {
 
-    // Evitar que se recargue la página
+    event.preventDefault() // detenga el comportamiento por defecto
 
+    const datosFormulario = new FormData(form)
 
-    // construir un objeto con los datos del formulario de 2 maneras diferentes
+    // const datos = {}
+
+    // datosFormulario.entries().forEach(([key, value]) => {
+    //     datos[key] = value
+    // });
+
+    const datos = Object.fromEntries(datosFormulario)
+
+    console.log(datos)
 
 
 })
