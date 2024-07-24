@@ -1,0 +1,27 @@
+
+html{
+    font-family: system-ui, sans-serif;
+    /* TODO: trabar con unidades em y rem en lugar de px */
+    font-size: 16px;
+}git s
+
+h1 {
+    color: #3F51B5 !important
+}
+
+h2 {
+    color: #283593
+}
+
+/* . es el selector para una clase */
+.titulo {
+    color: rgba(19, 76, 141, 0.463);
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.parrafo{
+    font-size: 18px;
+    color: #242424;
+    font-family: system-ui, sans-serif
+}

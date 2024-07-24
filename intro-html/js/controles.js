@@ -21,8 +21,17 @@ subtitulo[0].innerText = 'Referencia por medio de querySelectorAll'
 // Manejo de eventos
 
 const guardar = document.querySelector('#guardar')
-const inputs = document.querySelectorAll('input')
-const form = document.querySelector('form')
+const inputs = document.querySelectorAll('input') // lista de elementos HTML
+
+// *  section > img.rounded
+
+
+//? " form > button#cancelar " : Hacer referencia al elemento 
+//? con id "cancelar" que sea un boton 
+//? y esté dentro de un formulario
+
+
+const form = document.querySelector('form > button#cancelar ')
 
 //asignar un listener
 // guardar.addEventListener('click', (event) => {
@@ -57,3 +66,10 @@ form.addEventListener('submit', (event) => {
 
 
 })
+
+
+
+// CSS
+// Crear un servidor con NODE
+// usando fetch, gudar la info obgtenida desde el form 
+// crear API
