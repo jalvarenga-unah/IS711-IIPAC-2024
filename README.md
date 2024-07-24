@@ -18,6 +18,10 @@ Ing. Juan E. Alvarenga - jealvarengar@unah.edu.hn
 - Git: [https://git-scm.com/downloads]
 - NodeJS [https://nodejs.org/en/]
 
+## Juego de FlexBox
+[https://codingfantasy.com/games/flexboxadventure]
+
+
 ## Para clonar el repositorio
 
 Ejecutar el siguiente comando desde la consola de su computadora (despues de haber instalado git)
