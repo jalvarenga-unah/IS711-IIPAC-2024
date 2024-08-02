@@ -1,0 +1,11 @@
+
+### peticion de saludo
+GET http://localhost:3000/saludo/juan
+
+
+### lista de productos
+GET http://localhost:3000/productos
+
+
+### producto por id
+GET http://localhost:3000/productos/400
