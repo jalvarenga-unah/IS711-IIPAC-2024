@@ -8,7 +8,7 @@ GET http://localhost:3000/productos
 
 
 ### producto por id
-GET http://localhost:3000/productos/4
+GET http://localhost:3000/productos/a0872e7c-7dc6-4114-b6e4-9d4bfbe4a77a
 
 
 
@@ -17,7 +17,13 @@ POST http://localhost:3000/productos
 Content-Type: application/json 
 
 {
-    "title": "producto 1",
-    "description": 100,
-    "price": 1000
+    "title": "Otro producto mas",
+    "description": "Esta debe ser una descripción de al menos 20 caracteres",
+    "price": 10,
+    "category": "jewelery",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
 }
+
+### eliminar producto
+
+DELETE http://localhost:3000/productos/a0872e7c-7dc6-4114-b6e4-9d4bfbe4a77a

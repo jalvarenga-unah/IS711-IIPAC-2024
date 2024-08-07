@@ -1,4 +1,6 @@
 const express = require('express');
+const { validarProducto } = require('./schemas/producto.js')
+const crypto = require('node:crypto')
 const productos = require('./store/productos.json')
 
 // Creación del app de express
@@ -37,21 +39,19 @@ app.get('/productos', (req, res) => {
 
 })
 
-
-
 app.get('/productos/:id', (req, res) => {
 
     const { id } = req.params // todos los parametros son string
 
-    const castId = Number(id); // la conversión a los tipos correspondientes
+    // const castId = Number(id); // la conversión a los tipos correspondientes
 
-    if (!castId) {
-        return res
-            .status(400)
-            .json({ error: 'El id debe ser un número' })
-    }
+    // if (!castId) {
+    //     return res
+    //         .status(400)
+    //         .json({ error: 'El id debe ser un número' })
+    // }
 
-    const productoEncontrado = productos.find((producto) => { return producto.id === castId })
+    const productoEncontrado = productos.find((producto) => { return producto.id === id })
 
     if (!productoEncontrado) {
 
@@ -69,17 +69,39 @@ app.post('/productos', (req, res) => {
     //obtener los datos del body de la peticion enviados desde el cliente
     const data = req.body
     // validar que los datos sean correctos
-    if (!data.title || !data.price || !data.description) {
-        return res
-            .status(400)
-            .json({ error: 'Faltan datos' })
+    const resultados = validarProducto(data)
+
+    if (!resultados.success) {
+        //parsear el error y enviarlo al cliente de manera mas amigable
+        return res.status(400).json(JSON.stringify(resultados.error))
     }
 
-
     // agregar el producto al array de productos (en la BBDD)
+    const newProduct = { id: crypto.randomUUID(), ...data }
+    productos.push(newProduct)
 
     // retornar una respuesta al cliente
-    return res.json({ message: 'Creado' })
+    return res.status(201).json(newProduct)
+})
+
+app.delete('/productos/:id', (req, res) => {
+
+    const { id } = req.params
+
+    const productIndex = productos.findIndex((producto) => producto.id === id)
+
+    if (productIndex === -1) {
+        return res
+            .status(404)
+            .json({ error: 'Producto no encontrado' })
+    }
+
+    productos.splice(productIndex, 1)
+
+    return res.status(200).json({
+        message: 'Producto eliminado'
+    })
+
 })
 
 
