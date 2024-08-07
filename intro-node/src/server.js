@@ -8,6 +8,8 @@ app.disable('x-powered-by') // deshabilitar la cabecera x-powered-by
 //establecer el puerto
 const PORT = process.env.PORT || 3000
 
+// Middleware
+app.use(express.json()) // Middleware para parsear el body de las peticiones
 
 //RUTAS
 
@@ -35,12 +37,13 @@ app.get('/productos', (req, res) => {
 
 })
 
+
+
 app.get('/productos/:id', (req, res) => {
 
     const { id } = req.params // todos los parametros son string
 
     const castId = Number(id); // la conversión a los tipos correspondientes
-
 
     if (!castId) {
         return res
@@ -50,11 +53,33 @@ app.get('/productos/:id', (req, res) => {
 
     const productoEncontrado = productos.find((producto) => { return producto.id === castId })
 
+    if (!productoEncontrado) {
 
-    //TODO: TArea, si no se encuentra el producto, devolver un 404
+        return res
+            .status(404) // Recursos no encontrado
+            .json({ error: 'Producto no encontrado' })
+    }
+
 
     return res.json(productoEncontrado)
 
+})
+
+app.post('/productos', (req, res) => {
+    //obtener los datos del body de la peticion enviados desde el cliente
+    const data = req.body
+    // validar que los datos sean correctos
+    if (!data.title || !data.price || !data.description) {
+        return res
+            .status(400)
+            .json({ error: 'Faltan datos' })
+    }
+
+
+    // agregar el producto al array de productos (en la BBDD)
+
+    // retornar una respuesta al cliente
+    return res.json({ message: 'Creado' })
 })
 
 

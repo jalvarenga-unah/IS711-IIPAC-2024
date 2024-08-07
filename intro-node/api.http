@@ -8,4 +8,16 @@ GET http://localhost:3000/productos
 
 
 ### producto por id
-GET http://localhost:3000/productos/400
+GET http://localhost:3000/productos/4
+
+
+
+### agregar producto
+POST http://localhost:3000/productos
+Content-Type: application/json 
+
+{
+    "title": "producto 1",
+    "description": 100,
+    "price": 1000
+}
