@@ -27,3 +27,13 @@ Content-Type: application/json
 ### eliminar producto
 
 DELETE http://localhost:3000/productos/a0872e7c-7dc6-4114-b6e4-9d4bfbe4a77a
+
+
+### actualizar producto
+PATCH  http://localhost:3000/productos/a0872e7c-7dc6-4114-b6e4-9d4bfbe4a77a
+Content-Type: application/json 
+
+{    
+    "price": 5000,
+    "category": "electronics"
+}

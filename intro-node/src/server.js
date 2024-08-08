@@ -1,5 +1,6 @@
 const express = require('express');
-const { validarProducto } = require('./schemas/producto.js')
+const cors = require('cors')
+const { validarProducto, validarProductoParcial } = require('./schemas/producto.js')
 const crypto = require('node:crypto')
 const productos = require('./store/productos.json')
 
@@ -13,6 +14,10 @@ const PORT = process.env.PORT || 3000
 // Middleware
 app.use(express.json()) // Middleware para parsear el body de las peticiones
 
+app.use(cors({
+    origin: 'http://localhost:8081', // sudominio.com
+    methods: 'GET,POST,PATCH,DELETE',
+}))
 //RUTAS
 
 app.get('/', (request, response) => {
@@ -104,6 +109,37 @@ app.delete('/productos/:id', (req, res) => {
 
 })
 
+app.patch('/productos/:id', (req, res) => {
+
+    const { id } = req.params
+    const data = req.body
+
+    //buscar el producto en la BBDD
+    const productIndex = productos.findIndex((producto) => producto.id === id)
+
+    if (productIndex === -1) {
+        return res
+            .status(404)
+            .json({ error: 'Producto no encontrado' })
+    }
+
+    //validar que los datos sean correctos
+    const resultado = validarProductoParcial(data)
+
+    if (!resultado.success) {
+        return res.status(400).json(JSON.parse(resultado.error))
+    }
+
+    //es una nueva referencia de producto (no existe en la BBDD)
+    const productoActualizado = { ...productos[productIndex], ...data }
+
+    //actualizar el producto en la BBDD
+    productos[productIndex] = productoActualizado
+
+    return res.json(productoActualizado)
+
+
+})
 
 
 // lo poner en marcha

@@ -15,6 +15,11 @@ const validarProducto = (data) => {
 
 }
 
+const validarProductoParcial = (data) => {
+    return productoSchema.partial().safeParse(data)
+}
+
 module.exports = {
-    validarProducto
+    validarProducto,
+    validarProductoParcial
 }
