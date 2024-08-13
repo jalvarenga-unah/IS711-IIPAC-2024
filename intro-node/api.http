@@ -4,7 +4,7 @@ GET http://localhost:3000/saludo/juan
 
 
 ### lista de productos
-GET http://localhost:3000/productos
+GET http://localhost:3000/productos/ferge/dwef
 
 
 ### producto por id
